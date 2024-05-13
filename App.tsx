@@ -6,7 +6,7 @@ import { useFonts } from 'expo-font';
 import AppLoading from "expo-app-loading";
 import { ThemeProvider } from 'styled-components/native';
 import theme from './src/Global/theme';
-import { Login } from './src/screens/Login';
+import Routes from 'src/routes';
 
 export default function App() {
 
@@ -16,20 +16,11 @@ export default function App() {
     Inter_600SemiBold
   })
 
-  if (!fontsLoaded) return AppLoading;
+  // if (!fontsLoaded) re turn AppLoading;
 
   return (
-    <ThemeProvider theme={theme}>
-      <Login/>
+    <ThemeProvider theme={theme}> 
+      <Routes/>
     </ThemeProvider>
   );
 }
-
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     backgroundColor: '#fff',
-//     alignItems: 'center',
-//     justifyContent: 'center',
-//   },
-// });
