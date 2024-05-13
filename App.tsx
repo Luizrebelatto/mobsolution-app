@@ -5,7 +5,8 @@ import { Inter_400Regular, Inter_500Medium, Inter_600SemiBold } from "@expo-goog
 import { useFonts } from 'expo-font';
 import AppLoading from "expo-app-loading";
 import { ThemeProvider } from 'styled-components/native';
-import theme from './src/globals/theme';
+import theme from './src/Global/theme';
+import { Login } from './src/screens/Login';
 
 export default function App() {
 
@@ -19,19 +20,16 @@ export default function App() {
 
   return (
     <ThemeProvider theme={theme}>
-      <View style={styles.container}>
-        <Text>Open up App.tsx to start working on your app!</Text>
-        <StatusBar style="auto" />
-      </View>
+      <Login/>
     </ThemeProvider>
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+// const styles = StyleSheet.create({
+//   container: {
+//     flex: 1,
+//     backgroundColor: '#fff',
+//     alignItems: 'center',
+//     justifyContent: 'center',
+//   },
+// });
