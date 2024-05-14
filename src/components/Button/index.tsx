@@ -1,10 +1,10 @@
 import { Wrapper, Title } from "./styles"
 import { IButton } from "../../interfaces/button";
 
-export function Button({ title }: IButton){
+export function Button({ title, isTransparent, onPress }: IButton){
     return (
-       <Wrapper>
-            <Title>{title}</Title>
+       <Wrapper isTransparent={isTransparent} onPress={onPress}>
+            <Title isTransparent={isTransparent}>{title}</Title>
        </Wrapper>
     )
 }

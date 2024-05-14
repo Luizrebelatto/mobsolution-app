@@ -13,6 +13,6 @@ export const Title = styled.Text`
     font-size: 16px;
     line-height: 24px;
     font-family: ${({ theme }) => theme.fonts.semiBold};
-    color: ${({ theme }) => theme.colors.white};
+    color: ${({ theme, isTransparent }) => isTransparent ? theme.colors.darkCyanBlue : theme.colors.white};
     text-align: center;
 `;

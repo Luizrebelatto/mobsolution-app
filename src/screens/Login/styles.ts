@@ -12,7 +12,8 @@ export const Title = styled.Text`
     font-size: 24px;
     line-height: 36px;
     font-family: ${({ theme }) => theme.fonts.semiBold};
-    color: ${({ theme }) => theme.colors.grayDark}
+    color: ${({ theme }) => theme.colors.grayDark};
+    margin-top: 16px;
 `;
 
 export const TitleInput = styled.Text`
@@ -29,4 +30,8 @@ export const Input = styled.TextInput`
     width: 100%;
     border: 1.5px solid ${({ theme }) => theme.colors.graySoft};
     border-radius: 4px;
+`;
+
+export const WrapperButtons = styled.View`
+    margin-top: 32px;
 `;
