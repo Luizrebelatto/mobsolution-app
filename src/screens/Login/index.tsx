@@ -1,3 +1,4 @@
+import React from "react";
 import { Wrapper, Title, TitleInput, Input, WrapperButtons } from "./styles"
 import { Button } from "../../components/Button";
 import { Header } from "../../components/Header";
@@ -21,6 +22,7 @@ export function Login(){
                 placeholder="Insira sua senha"
             />
             <WrapperButtons>
+               
                 <Button
                     title="Entrar"
                     isTransparent={false}
@@ -32,7 +34,6 @@ export function Login(){
                     onPress={() => console.log("Esqueci a senha")}
                 />
             </WrapperButtons>
-           
         </Wrapper>
     )
 }
