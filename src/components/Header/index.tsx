@@ -1,7 +1,9 @@
-import { Wrapper, Title } from "./styles";
-import { IHeader } from "../../interfaces/header";
-import { Text, View } from "react-native"
+import React from "react";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
+
+import { Wrapper, Title, Content } from "./styles";
+import { IHeader } from "../../interfaces/header";
+import Arrow from "../../assets/arrowLeft.svg";
 
 export function Header({ title, backButton, onPress }: IHeader){
     const insets = useSafeAreaInsets().top
@@ -9,10 +11,10 @@ export function Header({ title, backButton, onPress }: IHeader){
     return (
        <Wrapper style={{ marginTop: insets + 10 }}>
             {backButton ? (
-                <View style={{ flexDirection: 'row', alignItems: 'center', justifyContent: 'space-between' }}>
-                    <Text>X</Text>
+                <Content>
+                    <Arrow/>
                     <Title>{title}</Title>
-                </View>
+                </Content>
             ) : 
                 <Title>{title}</Title>
             }

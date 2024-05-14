@@ -12,7 +12,8 @@ export const Title = styled.Text`
     font-size: 24px;
     line-height: 36px;
     font-family: ${({ theme }) => theme.fonts.semiBold};
-    color: ${({ theme }) => theme.colors.grayDark}
+    color: ${({ theme }) => theme.colors.grayDark};
+    margin-top: 16px;
 `;
 
 export const TitleInput = styled.Text`
@@ -36,4 +37,13 @@ export const TitleReq = styled.Text`
     line-height: 20px;
     font-family: ${({ theme }) => theme.fonts.regular};
     color: ${({ theme }) => theme.colors.grayLight};
+    margin-top: 16px;
+`;
+
+export const Instructions = styled.Text`
+    font-size: 14px;
+    line-height: 20px;
+    font-family: ${({ theme }) => theme.fonts.regular};
+    color: ${({ theme }) => theme.colors.success};
+    margin-left: 4px;
 `;

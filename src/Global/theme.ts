@@ -12,7 +12,7 @@ export default {
         cyanBlue: "#095A88",
         blueDark: "#063C5B",
         blueMedium: "#0C78B6",
-        darkCyanBlue: "#344054",
+        darkCyanBlue: "#344054"
     },
 
     fonts: {

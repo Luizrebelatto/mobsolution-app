@@ -13,3 +13,9 @@ export const Title = styled.Text`
     text-align: center;
     width: 100%;
 `;
+
+export const Content = styled.View`
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+`;

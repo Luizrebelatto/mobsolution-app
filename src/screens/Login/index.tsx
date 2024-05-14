@@ -1,9 +1,10 @@
 import React from "react";
-import { Wrapper, Title, TitleInput, Input, WrapperButtons } from "./styles"
+import { Wrapper, Title, WrapperButtons } from "./styles"
 import { Button } from "../../components/Button";
 import { Header } from "../../components/Header";
+import { Input } from "../../components/Input"
 
-export function Login(){
+export function Login({ navigation }){
     return (
         <Wrapper>
             <Header
@@ -11,22 +12,23 @@ export function Login(){
                 backButton={false}
             />
             <Title>Bem-vindo(a) de volta!</Title>
-            <TitleInput>Email</TitleInput>
-            <Input 
+
+            <Input
                 placeholder="Insira seu email"
-                keyboardType="email-address"
+                title="Email"
+                keyBoardType="email-address"
             />
-           
-            <TitleInput>Senha</TitleInput>
-            <Input 
+
+            <Input
                 placeholder="Insira sua senha"
+                title="Senha"
+                keyBoardType="default"
             />
             <WrapperButtons>
-               
                 <Button
                     title="Entrar"
                     isTransparent={false}
-                    onPress={() => console.log("Entrar")}
+                    onPress={() => navigation.navigate("forgotPassword")}
                 />
                 <Button
                     title="Esqueci a senha"

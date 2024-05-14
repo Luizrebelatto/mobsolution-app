@@ -1,3 +1,4 @@
+import React from "react";
 import { Wrapper, Title } from "./styles"
 import { IButton } from "../../interfaces/button";
 
