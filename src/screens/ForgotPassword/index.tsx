@@ -1,4 +1,5 @@
-import { Wrapper, Title, TitleInput, Input, Button, ButtonText } from "./styles"
+import { Wrapper, Title, TitleInput, Input } from "./styles"
+import { Button } from "../../components/Button";
 
 export function ForgotPassword(){
     return (
@@ -9,10 +10,10 @@ export function ForgotPassword(){
                 placeholder="Insira seu email"
                 keyboardType="email-address"
             />
-
-            <Button>
-                <ButtonText>Enviar código</ButtonText>
-            </Button>
+            <Button
+                title="Enviar código"
+                isTransparent={false}
+            />
         </Wrapper>
     )
 }

@@ -1,5 +1,6 @@
 import styled from "styled-components/native";
 
+
 export const Wrapper = styled.View`
     background-color: ${({ theme }) => theme.colors.background};
     padding-left: 16px;
@@ -28,4 +29,11 @@ export const Input = styled.TextInput`
     width: 100%;
     border: 1.5px solid ${({ theme }) => theme.colors.graySoft};
     border-radius: 4px;
+`;
+
+export const TitleReq = styled.Text`
+    font-size: 14px;
+    line-height: 20px;
+    font-family: ${({ theme }) => theme.fonts.regular};
+    color: ${({ theme }) => theme.colors.grayLight};
 `;

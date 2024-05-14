@@ -30,37 +30,3 @@ export const Input = styled.TextInput`
     border: 1.5px solid ${({ theme }) => theme.colors.graySoft};
     border-radius: 4px;
 `;
-
-export const Button = styled.TouchableOpacity`
-    height: 48px;
-    width: 100%;
-    background-color: ${({ theme }) => theme.colors.blueMedium};
-    padding: 12px 20px 12px 20px;
-    border-radius: 4px;
-    margin-top: 32px;
-`;
-
-export const ButtonText = styled.Text`
-    font-size: 16px;
-    line-height: 24px;
-    font-family: ${({ theme }) => theme.fonts.semiBold};
-    color: ${({ theme }) => theme.colors.white};
-    text-align: center;
-`;
-
-export const ButtonForgotPassword = styled.TouchableOpacity`
-    height: 48px;
-    width: 100%;
-    background-color: transparent;
-    padding: 12px 20px 12px 20px;
-    border-radius: 4px;
-    margin-top: 8px;
-`;
-
-export const ButtonTextPassword = styled.Text`
-    font-size: 16px;
-    line-height: 24px;
-    font-family: ${({ theme }) => theme.fonts.semiBold};
-    color: ${({ theme }) => theme.colors.darkCyanBlue};
-    text-align: center;
-`;

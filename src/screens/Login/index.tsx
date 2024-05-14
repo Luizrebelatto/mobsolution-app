@@ -1,6 +1,5 @@
-import {  Text } from "react-native";
-// import { Wrapper } from "../../Components/Container/styles"
-import { Wrapper, Title, TitleInput, Input, Button, ButtonText, ButtonForgotPassword, ButtonTextPassword } from "./styles"
+import { Wrapper, Title, TitleInput, Input } from "./styles"
+import { Button } from "../../components/Button";
 
 export function Login(){
     return (
@@ -16,14 +15,14 @@ export function Login(){
             <Input 
                 placeholder="Insira sua senha"
             />
-
-            <Button>
-                <ButtonText>Entrar</ButtonText>
-            </Button>
-
-            <ButtonForgotPassword>
-                <ButtonTextPassword>Esqueci a senha</ButtonTextPassword>
-            </ButtonForgotPassword>
+            <Button
+                title="Entrar"
+                isTransparent={false}
+            />
+            <Button
+                title="Esqueci a senha"
+                isTransparent={true}
+            />
         </Wrapper>
     )
 }
