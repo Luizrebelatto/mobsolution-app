@@ -28,7 +28,7 @@ export function Login({ navigation }){
                 <Button
                     title="Entrar"
                     isTransparent={false}
-                    onPress={() => navigation.navigate("forgotPassword")}
+                    onPress={() => navigation.navigate("tabRoutes")}
                 />
                 <Button
                     title="Esqueci a senha"
