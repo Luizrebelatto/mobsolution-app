@@ -1,12 +1,10 @@
 import React from "react";
 import { Wrapper, Title, Description } from "./styles"
 import { Button } from "../../components/Button";
-import { Header } from "src/components/Header";
-import { Input } from "src/components/Input";
-import { KeyboardAvoidingView, Platform, View } from "react-native";
+import { View } from "react-native";
 import IconCheck from "../../assets/check-blue.svg";
 
-export function Success(){
+export function Success({ navigation }){
     return (
         <>
             <Wrapper>
@@ -21,7 +19,7 @@ export function Success(){
                 <Button
                     title="Redefinir senha"
                     isTransparent={false}
-                    onPress={() => console.log("s")}
+                    onPress={() => navigation.navigate("login")}
                 />
             </View>
         </>

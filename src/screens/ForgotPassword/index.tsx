@@ -23,13 +23,15 @@ export function ForgotPassword({ navigation }){
                 <Input
                     keyBoardType="email-address"
                     placeholder="Insira seu email"
+                    onChangeText={(t)=> console.log(t)}
+                    value="sss"
                 />
             </Wrapper>
             <View style={{ marginBottom: 24, paddingLeft: 16, paddingRight: 16 }}>
                 <Button
                     title="Enviar código"
                     isTransparent={false}
-                    onPress={() => navigation.navigate("changePassword")}
+                    onPress={() => navigation.navigate("checkCode")}
                 />
             </View>
         </KeyboardAvoidingView>

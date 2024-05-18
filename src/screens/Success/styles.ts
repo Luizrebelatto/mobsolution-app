@@ -1,6 +1,5 @@
 import styled from "styled-components/native";
 
-
 export const Wrapper = styled.View`
     background-color: ${({ theme }) => theme.colors.background};
     padding-left: 16px;
@@ -8,13 +7,6 @@ export const Wrapper = styled.View`
     flex: 1;
     align-items: center;
     justify-content: center;
-`;
-
-export const Input = styled.TextInput`
-    height: 48px;
-    width: 100%;
-    border: 1.5px solid ${({ theme }) => theme.colors.graySoft};
-    border-radius: 4px;
 `;
 
 export const Title = styled.Text`

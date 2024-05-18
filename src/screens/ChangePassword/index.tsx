@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Wrapper, Title, TitleInput, TitleReq, Instructions } from "./styles"
 import { Button } from "../../components/Button";
 import { Header } from "src/components/Header";
@@ -8,6 +8,7 @@ import IconError from "../../assets/error.svg";
 import IconSuccess from "../../assets/check-green.svg";
 
 export function ChangePassword({ navigation }){
+    const [password, setPassword] = useState("")
     return (
         <KeyboardAvoidingView
             behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
@@ -20,12 +21,14 @@ export function ChangePassword({ navigation }){
                 />
                 <Title>Redefina sua Senha</Title>
                 <TitleInput>Sua nova senha deve ser diferente de senhas utilizadas previamente</TitleInput>
-                <Input 
-                    placeholder="Insira seu email"
-                    keyBoardType="email-address"
+                <Input
+                    placeholder="Insira sua nova senha"
+                    keyBoardType="default"
+                    value={password}
+                    onChangeText={(text) => setPassword(text)}
                 />
 
-                <TitleReq>Pré-Requisitos</TitleReq>
+                <TitleReq>{password}</TitleReq>
                 <View style={{ flexDirection: 'row', marginTop: 8 }}>
                     <IconSuccess/>
                     <Instructions>Ser diferente da senha anterior</Instructions>

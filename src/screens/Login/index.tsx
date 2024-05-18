@@ -60,7 +60,7 @@ export function Login({ navigation }){
                 <Button
                     title="Esqueci a senha"
                     isTransparent={true}
-                    onPress={checkAccountStatus}
+                    onPress={()=> navigation.navigate("forgotPassword")}
                 />
             </WrapperButtons>
         </Wrapper>

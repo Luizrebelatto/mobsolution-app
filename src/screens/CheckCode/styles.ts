@@ -25,8 +25,20 @@ export const TitleInput = styled.Text`
 `;
 
 export const Input = styled.TextInput`
-    height: 48px;
-    width: 100%;
+    height: 56px;
+    width: 59px;
     border: 1.5px solid ${({ theme }) => theme.colors.graySoft};
     border-radius: 4px;
+    margin-right: 12px;
+`;
+
+export const ButtonSendCode = styled.TouchableOpacity`
+    margin-top: 20px;
+`;
+
+export const TextSendCode = styled.Text`
+    font-size: 16px;
+    line-height: 24px;
+    font-family: ${({ theme }) => theme.fonts.semiBold};
+    color: ${({ theme }) => theme.colors.blueMedium};
 `;
