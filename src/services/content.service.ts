@@ -23,7 +23,7 @@ export function content(){
 
     async function contentByTheme({ idUsuario, ordenacao }: FetchContentByTheme): Promise<any> {
         try {
-            const response = await api().post("usuario/solicitarRecuperacao", {
+            const response = await api().post("estatisticas/porTema", {
                 idUsuario: idUsuario,
                 ordenacao: ordenacao
             })

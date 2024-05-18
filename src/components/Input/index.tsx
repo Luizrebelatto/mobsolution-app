@@ -5,18 +5,20 @@ import Password from "../../assets/password.svg"
 import { ITextInput } from "../../interfaces/input";
 import theme from "src/Global/theme";
 
-export function Input({ placeholder, title, keyBoardType }: ITextInput){
+export function Input(data: ITextInput){
     return (
         <>
-            <Title>{title}</Title>
+            <Title>{data.title}</Title>
             <Container>
-                {keyBoardType == 'default' ? <Password/> : <Mail/>}
+                {data.keyBoardType == 'default' ? <Password/> : <Mail/>}
                 <TextInput 
-                    placeholder={placeholder} 
-                    numberOfLines={35}
-                    keyboardType={keyBoardType}
-                    secureTextEntry={keyBoardType === 'default'}
+                    placeholder={data.placeholder} 
+                    maxLength={35}
+                    keyboardType={data.keyBoardType}
+                    secureTextEntry={data.keyBoardType === 'default'}
                     placeholderTextColor={theme.colors.grayLight}
+                    value={data.value}
+                    onChangeText={data.onChangeText}
                 />
             </Container>
       </>

@@ -1,9 +1,9 @@
 import api from "./api";
 
 interface FetchUser {
-    login: string;
-    senha: string;
-    nome: string;
+    login?: string;
+    senha?: string;
+    tokenAcesso?: string;
 }
 
 interface FetchRequestPassword {
@@ -22,12 +22,12 @@ interface FetchChangePassword {
 }
 
 export function userAuth(){
-    async function login({ login, senha, nome }: FetchUser): Promise<any> {
+    async function login({ login, senha, tokenAcesso }: FetchUser): Promise<any> {
         try {
             const response = await api().post("usuario/login", {
-                login: login,
-                senha: senha,
-                nome: nome
+                "login": "generico1MobSolution@gmail.com",
+	            "senha": "generico1",
+                "tokenAcesso": "b10583a254678158a93da0"
             })
             return response
         } catch (error) {
