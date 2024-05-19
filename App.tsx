@@ -16,7 +16,7 @@ export default function App() {
     Inter_600SemiBold
   })
   LogBox.ignoreAllLogs()
-  if (!fontsLoaded) return <Text>LOADING</Text>;
+  // if (!fontsLoaded) return <Text>LOADING</Text>;
 
   return (
     <ThemeProvider theme={theme}> 

@@ -54,8 +54,8 @@ export function CheckCode({ navigation }){
                 tokenRecuperarSenha: newCode
             })
 
-            if(response.error){
-                navigation.navigate("success")
+            if(!response.error){
+                navigation.navigate("changePassword")
             }
 
         } catch (error) {
@@ -69,7 +69,7 @@ export function CheckCode({ navigation }){
                 email: params?.email
             });
 
-            if (!response.error){
+            if (response.error){
                 navigation.navigate("changePassword")
             }
 		} catch(error) {
@@ -92,7 +92,7 @@ export function CheckCode({ navigation }){
                 onPress={() => navigation.goBack()}
             />
             <Title>Verifique o código</Title>
-            <TitleInput>Verifique o código que enviamos para o email <TitleBold>****luiz@gmail.com</TitleBold></TitleInput>
+            <TitleInput>Verifique o código que enviamos para o email <TitleBold>{params?.email}</TitleBold></TitleInput>
             <WrapperInput>
                 {code.map((item, index) => (
                     <Input 

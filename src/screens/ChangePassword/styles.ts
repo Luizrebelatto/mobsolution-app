@@ -38,3 +38,9 @@ export const TitleReq = styled.Text`
     color: ${({ theme }) => theme.colors.grayLight};
     margin-top: 16px;
 `;
+
+export const WrapperButton = styled.View`
+    margin-bottom: 24px;
+    padding-left: 16px;
+    padding-right: 16px;
+`;

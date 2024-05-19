@@ -1,5 +1,4 @@
 import api from "./api";
-
 interface FetchUser {
     login: string;
     senha: string;
@@ -47,7 +46,7 @@ export function userAuth(){
 
     async function validateRecoveryCode({ email, tokenRecuperarSenha }: FetchValidateRecoveryCode): Promise<any> {
         try {
-            const response = await api().post("usuario/solicitarRecuperacao", {
+            const response = await api().post("usuario/validarCodigoRecuperacao", {
                 email: email,
                 tokenRecuperarSenha: tokenRecuperarSenha
             })

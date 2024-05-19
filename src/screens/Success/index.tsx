@@ -17,7 +17,7 @@ export function Success({ navigation }){
             </Wrapper>
             <View style={{ marginBottom: 32, paddingLeft: 16, paddingRight: 16 }}>
                 <Button
-                    title="Redefinir senha"
+                    title="Login"
                     isTransparent={false}
                     onPress={() => navigation.navigate("login")}
                 />

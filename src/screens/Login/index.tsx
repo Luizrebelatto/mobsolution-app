@@ -5,6 +5,7 @@ import { Header } from "../../components/Header";
 import { Input } from "../../components/Input"
 import { userAuth } from "src/services/user.service";
 import { Alert } from "react-native";
+import { setItemStorage } from "src/utils/storageSave";
 
 export function Login({ navigation }){
     const [email, setEmail] = useState("")
@@ -16,13 +17,14 @@ export function Login({ navigation }){
                 login: email,
                 senha: password
             });
-            
-            if (!response.error){
+
+            if (response.error){
                 handleAlert(response.mensagem.split("+").join(" "))
             } else {
+                setItemStorage("logged", "true")
+                setItemStorage("password", password)
                 navigation.navigate("tabRoutes")
             }
-            
 		} catch {
 			console.log("error")
 		}
@@ -60,7 +62,7 @@ export function Login({ navigation }){
                 <Button
                     title="Entrar"
                     isTransparent={false}
-                    onPress={()=> navigation.navigate("tabRoutes")}
+                    onPress={handleLoginUser}
                 />
                 <Button
                     title="Esqueci a senha"

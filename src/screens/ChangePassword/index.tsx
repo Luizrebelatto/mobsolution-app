@@ -1,27 +1,24 @@
 import React, { useState } from "react";
-import { Wrapper, Title, TitleInput, TitleReq } from "./styles"
+import { Wrapper, Title, TitleInput, TitleReq, WrapperButton } from "./styles"
 import { Button } from "src/components/Button";
 import { Header } from "src/components/Header";
 import { Input } from "src/components/Input";
 import { RequirementPassword } from "src/components/RequirementPassword";
 import { KeyboardAvoidingView, Platform, View } from "react-native";
 
+import { isHasALetter, isHasNumber, isHasSpecialCharacter } from "../../utils/validFields";
+import { userAuth } from "src/services/user.service";
+import { getItemStorage } from "src/utils/storageSave";
+
 export function ChangePassword({ navigation }){
     const [password, setPassword] = useState("")
+    const [passwordIsValid, setPasswordIsValid] = useState(false)
 
-    function isHasNumber(str) {
-        const regex = /\d/;
-        return regex.test(str);
-    }
-
-    function isHasALetter(str) {
-        const regex = /^(?=.*[a-zA-Z]).{1,}$/;
-        return regex.test(str);
-    }
-
-    function isHasSpecialCharacter(str) {
-        const regex = /[!@#$%^&*]/;
-        return regex.test(str);
+    function handleGetPassword(value: string){
+        setPassword(value)
+        if(value.length >= 8 && isHasNumber(value) && isHasALetter(value) && isHasSpecialCharacter(value)){
+            setPasswordIsValid(true)
+        }
     }
 
     const requirements = [
@@ -47,6 +44,21 @@ export function ChangePassword({ navigation }){
         }
     ]
 
+    const handleChangePassword = async () => {
+		try {
+			const response = await userAuth().changePassword({
+                email: "generico1MobSolution@gmail.com",
+                tokenRecuperarSenha: "12345",
+                novaSenha: password
+            })
+            if(!response.error){
+                navigation.navigate("success")
+            }
+		} catch {
+			console.log("error")
+		}
+	};
+
     return (
         <KeyboardAvoidingView
             behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
@@ -63,7 +75,7 @@ export function ChangePassword({ navigation }){
                     placeholder="Insira sua nova senha"
                     keyBoardType="default"
                     value={password}
-                    onChangeText={(text) => setPassword(text)}
+                    onChangeText={(text: string) => handleGetPassword(text)}
                 />
                 <TitleReq>Pré-requisitos</TitleReq>
                 {requirements.map((item, index) => (
@@ -75,13 +87,14 @@ export function ChangePassword({ navigation }){
                 ))}
             </Wrapper>
 
-            <View style={{ marginBottom: 24, paddingLeft: 16, paddingRight: 16 }}>
+            <WrapperButton>
                 <Button
                     title="Redefinir senha"
                     isTransparent={false}
-                    onPress={() => navigation.navigate("success")}
+                    onPress={handleChangePassword}
+                    isEnabled={false}
                 />
-            </View>
+            </WrapperButton>
         </KeyboardAvoidingView>
     )
 }

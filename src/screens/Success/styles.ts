@@ -28,3 +28,9 @@ export const Description = styled.Text`
     line-height: 24px;
     font-weight: 400;
 `;
+
+export const WrapperButton = styled.View`
+    margin-bottom: 32px;
+    padding-left: 16px;
+    padding-right: 16px;
+`;

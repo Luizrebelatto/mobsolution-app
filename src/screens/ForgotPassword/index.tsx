@@ -1,11 +1,10 @@
 import React, { useState } from "react";
-
 import { Wrapper, Title, TitleInput, WrapperButton } from "./styles"
 import { Button } from "../../components/Button";
 import { Input } from "../../components/Input";
 import { Header } from "../../components/Header";
 
-import { KeyboardAvoidingView, Platform, View, Alert } from "react-native"
+import { KeyboardAvoidingView, Platform, Alert } from "react-native"
 import { userAuth } from "src/services/user.service";
 
 export function ForgotPassword({ navigation }){
@@ -23,7 +22,7 @@ export function ForgotPassword({ navigation }){
                 email: email
             });
 
-            if (!response.error){
+            if (response.error){
                 handleAlert(response.mensagem.split("+").join(" "))
             } else {
                 navigation.navigate("checkCode", { email: email })
