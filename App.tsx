@@ -6,6 +6,7 @@ import { useFonts } from 'expo-font';
 import { ThemeProvider } from 'styled-components/native';
 import theme from './src/Global/theme';
 import Routes from 'src/routes';
+import {  LogBox, Text } from "react-native"
 
 export default function App() {
 
@@ -14,8 +15,8 @@ export default function App() {
     Inter_500Medium,
     Inter_600SemiBold
   })
-
-  // if (!fontsLoaded) re turn AppLoading;
+  LogBox.ignoreAllLogs()
+  if (!fontsLoaded) return <Text>LOADING</Text>;
 
   return (
     <ThemeProvider theme={theme}> 

@@ -4,7 +4,7 @@ import { useSafeAreaInsets } from "react-native-safe-area-context";
 import { TouchableOpacity } from "react-native"
 import { Wrapper, Title, Content } from "./styles";
 import { IHeader } from "../../interfaces/header";
-import Arrow from "../../assets/arrowLeft.svg";
+import Arrow from "../../assets/svg/arrowLeft.svg";
 
 export function Header({ title, backButton, onPress }: IHeader){
     const insets = useSafeAreaInsets().top

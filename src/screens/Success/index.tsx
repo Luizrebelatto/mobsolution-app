@@ -2,7 +2,7 @@ import React from "react";
 import { Wrapper, Title, Description } from "./styles"
 import { Button } from "../../components/Button";
 import { View } from "react-native";
-import IconCheck from "../../assets/check-blue.svg";
+import IconCheck from "../../assets/svg/check-blue.svg";
 
 export function Success({ navigation }){
     return (

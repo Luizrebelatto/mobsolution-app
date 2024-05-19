@@ -1,7 +1,7 @@
 import React from "react";
 import { Container, Title, TextInput } from "./styles";
-import Mail from "../../assets/mail.svg"
-import Password from "../../assets/password.svg"
+import Mail from "../../assets/svg/mail.svg"
+import Password from "../../assets/svg/password.svg"
 import { ITextInput } from "../../interfaces/input";
 import theme from "src/Global/theme";
 

@@ -60,7 +60,7 @@ export function Login({ navigation }){
                 <Button
                     title="Entrar"
                     isTransparent={false}
-                    onPress={()=> navigation.navigate("success")}
+                    onPress={()=> navigation.navigate("tabRoutes")}
                 />
                 <Button
                     title="Esqueci a senha"
