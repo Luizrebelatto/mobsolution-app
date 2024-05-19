@@ -30,3 +30,9 @@ export const Input = styled.TextInput`
     border: 1.5px solid ${({ theme }) => theme.colors.graySoft};
     border-radius: 4px;
 `;
+
+export const WrapperButton = styled.View`
+    margin-bottom: 24px;
+    padding-left: 16px;
+    padding-right: 16px;
+`;

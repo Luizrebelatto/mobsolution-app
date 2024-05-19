@@ -4,6 +4,7 @@ import { Button } from "../../components/Button";
 import { Header } from "../../components/Header";
 import { Input } from "../../components/Input"
 import { userAuth } from "src/services/user.service";
+import { Alert } from "react-native";
 
 export function Login({ navigation }){
     const [email, setEmail] = useState("")
@@ -16,7 +17,9 @@ export function Login({ navigation }){
                 senha: password
             });
             
-            if (response.error){
+            if (!response.error){
+                handleAlert(response.mensagem.split("+").join(" "))
+            } else {
                 navigation.navigate("tabRoutes")
             }
             
@@ -24,6 +27,12 @@ export function Login({ navigation }){
 			console.log("error")
 		}
 	};
+
+    const handleAlert = (error: string) => {
+        Alert.alert('Dados Incorretos', error, [
+            {text: 'Tentar Novamente'},
+          ]);
+    }
 
     return (
         <Wrapper>
@@ -51,7 +60,7 @@ export function Login({ navigation }){
                 <Button
                     title="Entrar"
                     isTransparent={false}
-                    onPress={handleLoginUser}
+                    onPress={()=> navigation.navigate("success")}
                 />
                 <Button
                     title="Esqueci a senha"

@@ -42,3 +42,18 @@ export const TextSendCode = styled.Text`
     font-family: ${({ theme }) => theme.fonts.semiBold};
     color: ${({ theme }) => theme.colors.blueMedium};
 `;
+
+export const WrapperInput = styled.View`
+    flex-direction: row;
+    margin-top: 16px;
+`;
+
+export const TitleBold = styled.Text`
+    font-size: 16px;
+    line-height: 20px;
+    font-family: ${({ theme }) => theme.fonts.semiBold};
+    color: ${({ theme }) => theme.colors.darkCyanBlue};
+    margin-bottom: 4px;
+    margin-top: 9px;
+    font-weight: bold;
+`;
