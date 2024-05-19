@@ -1,6 +1,5 @@
 import styled from "styled-components/native";
 
-
 export const Wrapper = styled.View`
     background-color: ${({ theme }) => theme.colors.background};
     padding-left: 16px;
@@ -38,12 +37,4 @@ export const TitleReq = styled.Text`
     font-family: ${({ theme }) => theme.fonts.regular};
     color: ${({ theme }) => theme.colors.grayLight};
     margin-top: 16px;
-`;
-
-export const Instructions = styled.Text`
-    font-size: 14px;
-    line-height: 20px;
-    font-family: ${({ theme }) => theme.fonts.regular};
-    color: ${({ theme }) => theme.colors.success};
-    margin-left: 4px;
 `;

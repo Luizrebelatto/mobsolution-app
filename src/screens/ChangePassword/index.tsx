@@ -1,14 +1,52 @@
 import React, { useState } from "react";
-import { Wrapper, Title, TitleInput, TitleReq, Instructions } from "./styles"
-import { Button } from "../../components/Button";
+import { Wrapper, Title, TitleInput, TitleReq } from "./styles"
+import { Button } from "src/components/Button";
 import { Header } from "src/components/Header";
 import { Input } from "src/components/Input";
+import { RequirementPassword } from "src/components/RequirementPassword";
 import { KeyboardAvoidingView, Platform, View } from "react-native";
-import IconError from "../../assets/error.svg";
-import IconSuccess from "../../assets/check-green.svg";
 
 export function ChangePassword({ navigation }){
     const [password, setPassword] = useState("")
+
+    function isHasNumber(str) {
+        const regex = /\d/;
+        return regex.test(str);
+    }
+
+    function isHasALetter(str) {
+        const regex = /^(?=.*[a-zA-Z]).{1,}$/;
+        return regex.test(str);
+    }
+
+    function isHasSpecialCharacter(str) {
+        const regex = /[!@#$%^&*]/;
+        return regex.test(str);
+    }
+
+    const requirements = [
+        {
+            title: "Ser diferente da senha anterior",
+            isValid: false
+        },
+        {
+            title: "Conter pelo menos 8 caracteres",
+            isValid: password.length >= 8
+        },
+        {
+            title: "Conter pelo menos um número",
+            isValid: isHasNumber(password)
+        },
+        {
+            title: "Conter pelo menos uma letra",
+            isValid: isHasALetter(password)
+        },
+        {
+            title: "Conter pelo menos um caractere especial(!@#$%ˆ&*)",
+            isValid: isHasSpecialCharacter(password)
+        }
+    ]
+
     return (
         <KeyboardAvoidingView
             behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
@@ -27,29 +65,14 @@ export function ChangePassword({ navigation }){
                     value={password}
                     onChangeText={(text) => setPassword(text)}
                 />
-
-                <TitleReq>{password}</TitleReq>
-                <View style={{ flexDirection: 'row', marginTop: 8 }}>
-                    <IconSuccess/>
-                    <Instructions>Ser diferente da senha anterior</Instructions>
-                </View>
-                <View style={{ flexDirection: 'row', marginTop: 8 }}>
-                    <IconSuccess/>
-                    <Instructions>Conter pelo menos 8 caracteres</Instructions>
-                </View>
-                <View style={{ flexDirection: 'row', marginTop: 8 }}>
-                    <IconSuccess/>
-                    <Instructions>Conter pelo menos um número</Instructions>
-                </View>
-                <View style={{ flexDirection: 'row', marginTop: 8 }}>
-                    <IconSuccess/>
-                    <Instructions>Conter pelo menos uma letra</Instructions>
-                </View>
-                <View style={{ flexDirection: 'row', marginTop: 8 }}>
-                    <IconSuccess/>
-                    <Instructions>Conter pelo menos um caractere especial(!@#$%ˆ&*)</Instructions>
-                </View>
-                
+                <TitleReq>Pré-requisitos</TitleReq>
+                {requirements.map((item, index) => (
+                    <RequirementPassword
+                        key={index}
+                        title={item.title}
+                        isValid={item.isValid}
+                    />
+                ))}
             </Wrapper>
 
             <View style={{ marginBottom: 24, paddingLeft: 16, paddingRight: 16 }}>
@@ -59,7 +82,6 @@ export function ChangePassword({ navigation }){
                     onPress={() => navigation.navigate("success")}
                 />
             </View>
-            
         </KeyboardAvoidingView>
     )
 }

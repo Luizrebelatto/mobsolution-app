@@ -3,31 +3,28 @@ import { Wrapper, Title, WrapperButtons } from "./styles"
 import { Button } from "../../components/Button";
 import { Header } from "../../components/Header";
 import { Input } from "../../components/Input"
-import api from "src/services/api";
 import { userAuth } from "src/services/user.service";
-import { content } from "src/services/content.service";
 
 export function Login({ navigation }){
-
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
 
-
-    const checkAccountStatus = async () => {
+    const handleLoginUser = async () => {
 		try {
 			const response = await userAuth().login({
-                login: "generico1MobSolution@gmail.com",
-                senha: "generico1",
-                tokenAcesso: "b10583a254678158a93da0"
+                login: email,
+                senha: password
             });
-            console.log("LOG LINHA 22: ",  decodeURIComponent(response.data))
+            
+            if (response.error){
+                navigation.navigate("tabRoutes")
+            }
+            
 		} catch {
 			console.log("error")
 		}
 	};
 
-    
-    
     return (
         <Wrapper>
             <Header
@@ -35,13 +32,12 @@ export function Login({ navigation }){
                 backButton={false}
             />
             <Title>Bem-vindo(a) de volta!</Title>
-
             <Input
                 placeholder="Insira seu email"
                 title="Email"
                 keyBoardType="email-address"
                 value={email}
-                onChangeText={setEmail}
+                onChangeText={(value) => setEmail(value)}
             />
 
             <Input
@@ -49,13 +45,13 @@ export function Login({ navigation }){
                 title="Senha"
                 keyBoardType="default"
                 value={password}
-                onChangeText={setPassword}
+                onChangeText={(value) => setPassword(value)}
             />
             <WrapperButtons>
                 <Button
                     title="Entrar"
                     isTransparent={false}
-                    onPress={()=> navigation.navigate("tabRoutes")}
+                    onPress={handleLoginUser}
                 />
                 <Button
                     title="Esqueci a senha"

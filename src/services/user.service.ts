@@ -1,9 +1,8 @@
 import api from "./api";
 
 interface FetchUser {
-    login?: string;
-    senha?: string;
-    tokenAcesso?: string;
+    login: string;
+    senha: string;
 }
 
 interface FetchRequestPassword {
@@ -22,14 +21,14 @@ interface FetchChangePassword {
 }
 
 export function userAuth(){
-    async function login({ login, senha, tokenAcesso }: FetchUser): Promise<any> {
+    async function login({ login, senha }: FetchUser): Promise<any> {
         try {
             const response = await api().post("usuario/login", {
-                "login": "generico1MobSolution@gmail.com",
-	            "senha": "generico1",
+                "login": login,
+	            "senha": senha,
                 "tokenAcesso": "b10583a254678158a93da0"
             })
-            return response
+            return JSON.parse(decodeURIComponent(response.data))
         } catch (error) {
             return Promise.reject(error)
         }
@@ -40,7 +39,7 @@ export function userAuth(){
             const response = await api().post("usuario/solicitarRecuperacao", {
                 email: email
             })
-            return response
+            return JSON.parse(decodeURIComponent(response.data))
         } catch (error) {
             return Promise.reject(error)
         }
