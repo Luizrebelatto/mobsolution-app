@@ -1,11 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Wrapper, Title, TitleInput, TitleReq, WrapperButton } from "./styles"
 import { Button } from "src/components/Button";
 import { Header } from "src/components/Header";
 import { Input } from "src/components/Input";
 import { RequirementPassword } from "src/components/RequirementPassword";
 import { KeyboardAvoidingView, Platform, View } from "react-native";
-
+import { Alert } from "react-native"
 import { isHasALetter, isHasNumber, isHasSpecialCharacter } from "../../utils/validFields";
 import { userAuth } from "src/services/user.service";
 import { useRoute } from "@react-navigation/native";
@@ -54,8 +54,10 @@ export function ChangePassword({ navigation }){
             if(!response.error){
                 navigation.navigate("success")
             }
-		} catch {
-			console.log("error")
+		} catch(error) {
+			Alert.alert('Requisição invalida', error, [
+                {text: 'Tente Novamente'},
+              ]);
 		}
 	};
 

@@ -90,7 +90,9 @@ export function CheckCode({ navigation }){
                 navigation.navigate("changePassword")
             }
 		} catch(error) {
-			console.log("error: ", error)
+			Alert.alert('Requisição invalida', error, [
+                {text: 'Tente Novamente'},
+              ]);
 		}
 	};
 

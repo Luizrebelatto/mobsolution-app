@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Wrapper, Title, Line, Quantity, Content } from "./styles"
 import { content } from "src/services/content.service";
+import { Alert } from "react-native"
 
 export function Details(){
     const [generalContent, setGeneralContent] = useState<any>()
@@ -12,8 +13,10 @@ export function Details(){
             })
             setGeneralContent(JSON.parse(decodeURIComponent(response.data)))
             return response.data
-		} catch {
-			console.log("error")
+		} catch(error) {
+			Alert.alert('Requisição invalida', error, [
+                {text: 'Tente Novamente'},
+              ]);
 		}
 	};
 
