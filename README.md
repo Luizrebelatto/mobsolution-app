@@ -11,7 +11,7 @@ Projeto desenvolvido com expo
 **Clone o Repositório**
 
 ```
-git clone [https://expo.dev](https://github.com/Luizrebelatto/mobsolution-app.git)
+git clone https://github.com/Luizrebelatto/mobsolution-app.git
 ```
 
 **Instalar libs**
