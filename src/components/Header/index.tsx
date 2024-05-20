@@ -16,6 +16,7 @@ export function Header({ title, backButton, onPress }: IHeader){
                     <TouchableOpacity 
                         activeOpacity={0.8}
                         onPress={onPress}
+                        style={{ width: 30, height: 30 }}
                     >
                         <Arrow/>
                     </TouchableOpacity>

@@ -5,11 +5,13 @@ import { Header } from "../../components/Header";
 import { Input } from "../../components/Input"
 import { userAuth } from "src/services/user.service";
 import { Alert } from "react-native";
-import { setItemStorage } from "src/utils/storageSave";
+import { useRecoilState } from "recoil"
+import { userLogged } from "../../utils/state"
 
 export function Login({ navigation }){
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
+    const [, setUserIsLogged] = useRecoilState(userLogged);
 
     const handleLoginUser = async () => {
 		try {
@@ -21,12 +23,12 @@ export function Login({ navigation }){
             if (response.error){
                 handleAlert(response.mensagem.split("+").join(" "))
             } else {
-                setItemStorage("logged", "true")
-                setItemStorage("password", password)
-                navigation.navigate("tabRoutes")
+                setUserIsLogged(true)
             }
-		} catch {
-			console.log("error")
+		} catch(error) {
+			Alert.alert('Requisição invalida', error, [
+                {text: 'Tentar Novamente'},
+              ]);
 		}
 	};
 

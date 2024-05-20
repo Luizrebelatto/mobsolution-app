@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from "react";
 
 import { Wrapper, Title, TitleInput, Input, ButtonSendCode, TextSendCode, WrapperInput, TitleBold  } from "./styles"
 import { Header } from "../../components/Header";
-import { TextInput } from "react-native"
+import { Alert, TextInput } from "react-native"
 import { userAuth } from "src/services/user.service";
 import { useRoute } from "@react-navigation/native";
 
@@ -18,6 +18,23 @@ export function CheckCode({ navigation }){
 
     const route = useRoute();
     const params = route.params as any;
+
+    const handleAlert = (error: string) => {
+        Alert.alert('Dado Incorreto', error, [
+            {text: 'Tentar Novamente'},
+          ]);
+    }
+
+    function censorEmail(email) {
+        const atIndex = email.indexOf('@');
+        if (atIndex < 4) {
+            const censurado = '****' + email.slice(2);
+            return censurado;
+        } else {
+            const censurado = '****' + email.slice(2);
+            return censurado;
+        }    
+    }
 
     const handleKeyPress = (event: any, index: number) => {
 		if (
@@ -55,11 +72,11 @@ export function CheckCode({ navigation }){
             })
 
             if(!response.error){
-                navigation.navigate("changePassword")
+                navigation.navigate("changePassword", { email: params?.email, code: newCode })
             }
 
         } catch (error) {
-            console.log(error)
+            handleAlert(error)
         }
 	};
 
@@ -69,7 +86,7 @@ export function CheckCode({ navigation }){
                 email: params?.email
             });
 
-            if (response.error){
+            if (!response.error){
                 navigation.navigate("changePassword")
             }
 		} catch(error) {
@@ -92,7 +109,7 @@ export function CheckCode({ navigation }){
                 onPress={() => navigation.goBack()}
             />
             <Title>Verifique o código</Title>
-            <TitleInput>Verifique o código que enviamos para o email <TitleBold>{params?.email}</TitleBold></TitleInput>
+            <TitleInput>Verifique o código que enviamos para o email <TitleBold>{censorEmail(params?.email)}</TitleBold></TitleInput>
             <WrapperInput>
                 {code.map((item, index) => (
                     <Input 
@@ -112,6 +129,7 @@ export function CheckCode({ navigation }){
                         ref={(input: any) =>
                             (inputs.current[index] = input!)
                         }
+                        isNull={item == ""}
                     />
                 ))}
            </WrapperInput>

@@ -28,7 +28,7 @@ export function ForgotPassword({ navigation }){
                 navigation.navigate("checkCode", { email: email })
             }
 		} catch(error) {
-			console.log("error: ", error)
+			handleAlert(error)
 		}
 	};
 

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Wrapper, Title, TitleInput, TitleReq, WrapperButton } from "./styles"
 import { Button } from "src/components/Button";
 import { Header } from "src/components/Header";
@@ -8,9 +8,13 @@ import { KeyboardAvoidingView, Platform, View } from "react-native";
 
 import { isHasALetter, isHasNumber, isHasSpecialCharacter } from "../../utils/validFields";
 import { userAuth } from "src/services/user.service";
-import { getItemStorage } from "src/utils/storageSave";
+import { useRoute } from "@react-navigation/native";
 
 export function ChangePassword({ navigation }){
+
+    const route = useRoute();
+    const params = route.params as any;
+
     const [password, setPassword] = useState("")
     const [passwordIsValid, setPasswordIsValid] = useState(false)
 
@@ -22,10 +26,6 @@ export function ChangePassword({ navigation }){
     }
 
     const requirements = [
-        {
-            title: "Ser diferente da senha anterior",
-            isValid: false
-        },
         {
             title: "Conter pelo menos 8 caracteres",
             isValid: password.length >= 8
@@ -47,8 +47,8 @@ export function ChangePassword({ navigation }){
     const handleChangePassword = async () => {
 		try {
 			const response = await userAuth().changePassword({
-                email: "generico1MobSolution@gmail.com",
-                tokenRecuperarSenha: "12345",
+                email: params.email,
+                tokenRecuperarSenha: params.code,
                 novaSenha: password
             })
             if(!response.error){
@@ -68,6 +68,7 @@ export function ChangePassword({ navigation }){
                 <Header
                     title="Esqueci a senha"
                     backButton={true}
+                    onPress={() => navigation.goBack()}
                 />
                 <Title>Redefina sua Senha</Title>
                 <TitleInput>Sua nova senha deve ser diferente de senhas utilizadas previamente</TitleInput>
@@ -77,7 +78,7 @@ export function ChangePassword({ navigation }){
                     value={password}
                     onChangeText={(text: string) => handleGetPassword(text)}
                 />
-                <TitleReq>Pré-requisitos</TitleReq>
+                <TitleReq>Pré-requisito}</TitleReq>
                 {requirements.map((item, index) => (
                     <RequirementPassword
                         key={index}
@@ -92,7 +93,7 @@ export function ChangePassword({ navigation }){
                     title="Redefinir senha"
                     isTransparent={false}
                     onPress={handleChangePassword}
-                    isEnabled={false}
+                    isDisable={passwordIsValid}
                 />
             </WrapperButton>
         </KeyboardAvoidingView>

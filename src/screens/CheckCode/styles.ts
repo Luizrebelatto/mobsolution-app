@@ -24,10 +24,10 @@ export const TitleInput = styled.Text`
     margin-top: 9px;
 `;
 
-export const Input = styled.TextInput`
+export const Input = styled.TextInput<{ isNull: boolean }>`
     height: 56px;
     width: 59px;
-    border: 1.5px solid ${({ theme }) => theme.colors.graySoft};
+    border: 1.5px solid ${({ theme, isNull }) => isNull ? theme.colors.graySoft : theme.colors.cyanBlue};
     border-radius: 4px;
     margin-right: 12px;
 `;
