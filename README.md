@@ -2,27 +2,22 @@
 
 Teste Técnico mob solution
 
-### Setup Environment
+### Sobre
 
-Project created with React Native CLI.[ See official docs](https://reactnative.dev/docs/environment-setup) to set up the environment.
-
-**Env Variables**
-
-Create a file called .env in the root of the project with the following variables:
-
-```
-HERE_API_KEY=
-WEATHER_API_KEY=
-```
-
-There is an example in [.env.example](./.env.example). **You need request the keys to the project owner**.
+Projeto desenvolvido com expo
 
 ### Run
 
-**Install dependencies**
+**Clone o Repositório**
 
 ```
-yarn
+git clone [https://expo.dev](https://github.com/Luizrebelatto/mobsolution-app.git)
+```
+
+**Instalar libs**
+
+```
+yarn ou npm install
 ```
 
 **Install IOS Pods**
@@ -43,19 +38,14 @@ yarn ios
 yarn android
 ```
 
-**Run Tests**
-
-```
-yarn test
-```
-
-### 🛠 Tech and Libraries
+### Tecnologias and Bibliotecas
 
 - React Native
 - Typescript
-- axios
-- styled-components
-- async-storage
+- axios -> Requisições HTTP
+- styled-components -> Estilizações dos componentes
+- Recoil -> controlador de estados
+- dot-env -> Manipulações de variaveis de ambiente
 
 ### App Screenshots
 
